@@ -1,0 +1,40 @@
+//- shop.jade
+
+doctype html
+html(
+  lang="en"
+  ng-app="shopApp"
+  ng-strict-di
+)
+  head
+    meta(charset="UTF-8")
+    meta(
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    )
+    title Koluki :: Shop Online
+    // build:css:prod css/shop.min.css
+    // bower:css
+    // endbower
+    link(
+      rel="stylesheet"
+      href="css/imports.css"
+    )
+    link(
+      rel="stylesheet"
+      href="css/shop.css"
+    )
+    // /build
+  body(ng-controller="ApplicationController")
+    include _header
+    .container-main(
+      ng-view
+      autoscroll="true"
+    )
+    include _footer
+    // build:js:prod js/shop.min.js
+    // bower:js
+    // endbower
+    script(src="js/boot.js")
+    script(src="js/shop.js")
+    // /build

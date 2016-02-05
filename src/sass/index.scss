@@ -1,0 +1,186 @@
+// index.scss
+
+@import "reset";
+@import "common";
+@import "footer";
+
+$header-min-height: 50px;
+
+nav {
+  .container {
+    height: $header-min-height;
+  }
+}
+
+.navbar {
+  border: {
+    width: 0;
+  }
+}
+
+.navbar-default,
+.navbar-collapse {
+  background: {
+    image: linear-gradient(rgb(143, 143, 143), rgb(128, 128, 128), rgb(138, 138, 138));
+  }
+}
+
+.navbar-toggle {
+  background: {
+    color: #DDD;
+  }
+}
+
+.navbar-brand {
+  img {
+    height: $header-min-height - 25;
+    width: $header-min-height - 25;
+  }
+}
+
+.navbar-text {
+  font: {
+    family: 'Tangerine', cursive;
+    size: 14px;
+    weight: 700;
+  }
+
+  margin: {
+    left: 0;
+  }
+
+  color: white !important;
+
+  text: {
+    shadow: 2px 2px 2px black;
+  }
+}
+
+.navbar-collapse {
+  border: {
+    color: rgb(138, 138, 138) !important;
+  }
+}
+
+.navbar-nav {
+  a {
+    font: {
+      family: 'Roboto', sans-serif;
+      size: 14px;
+      weight: 300;
+    }
+
+    text-transform: uppercase;
+    color: white !important;
+
+    margin: {
+      top: -1px;
+    }
+  }
+}
+
+.container-main {
+  margin: {
+    top: $header-min-height;
+  }
+}
+
+@media (min-width: 768px) {
+  $header-max-height: 100px;
+
+  nav {
+    .container {
+      @include transition-all(0.5s);
+    }
+
+    &.navbar-large .container {
+      height: $header-max-height;
+    }
+  }
+
+  .navbar-brand {
+    img {
+      @include transition-all(0.5s);
+    }
+  }
+
+  .navbar-text {
+    @include transition-all(0.5s);
+  }
+
+  .navbar-nav {
+    li.active {
+      border: {
+        top: {
+          color: white;
+          style: solid;
+          width: 1px;
+        }
+      }
+
+      a {
+        box-shadow: none !important;
+
+        background: {
+          image: none !important;
+          color: transparent !important;
+        }
+      }
+
+      @include transition-all(0.5s);
+    }
+
+    a {
+      @include transition-all(0.5s);
+    }
+  }
+
+  .navbar-large {
+    .navbar-brand {
+      img {
+        height: $header-max-height - 30;
+        width: $header-max-height - 30;
+      }
+    }
+
+    .navbar-text {
+      font: {
+        size: 48px;
+      }
+
+      margin: {
+        left: 15px;
+      }
+    }
+
+    .navbar-nav {
+      li.active {
+        border: {
+          width: 5px;
+        }
+
+        a {
+          margin: {
+            top: 20px;
+          }
+        }
+      }
+
+      a {
+        font: {
+          size: 25px;
+        }
+
+        margin: {
+          top: 25px;
+        }
+      }
+    }
+  }
+
+  .container-main {
+    margin: {
+      top: $header-max-height;
+    }
+  }
+}

@@ -1,0 +1,83 @@
+<div class="container">
+  <!--<div class="media" ng-repeat="item in cart.items">
+    <div class="media-left">
+      <img src="http://placehold.it/24x24" alt="" class="media-object" />
+    </div>
+    <div class="media-body">
+      <h4>{{ item.product.title }}</h4>
+      <p>{{ item.product.description }}</p>
+    </div>
+    <div class="media-right">
+      <p>{{ item.quantity }}</p>
+    </div>
+  </div>-->
+  <!--<div class="row">
+    <h2>Shopping Cart</h2>
+  </div>
+  <div class="row" ng-repeat="item in cart.items">
+    <div class="col-md-4 col-xs-6">
+      <img src="http://placehold.it/32x32" alt="">
+      <h4>{{ item.product.title }}</h4>
+    </div>
+    <div class="col-md-1 col-xs-1">
+      <h4>{{ item.quantity }}</h4>
+    </div>
+    <div class="col-md-1 col-xs-1">
+      <h4>x</h4>
+    </div>
+    <div class="col-md-1 col-xs-1">
+      <h4>{{ item.product.price | currency }}</h4>
+    </div>
+  </div>-->
+  <div class="row">
+    <h2>
+      <!--<a href="#/" class="btn btn-default">
+        <span class="fa fa-arrow-left"></span> back
+      </a>-->
+      Shopping Cart
+    </h2>
+    <p>
+      <a href="#/">
+        <span class="fa fa-arrow-left"></span> back
+      </a>
+    </p>
+  </div>
+  <div class="row">
+    <p ng-show="isEmpty">Your cart is empty. Start shopping <a href="#/">now</a>.</p>
+    <table class="table" ng-hide="isEmpty">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Product</th>
+          <th class="text-center">Quantity</th>
+          <th class="text-right">Price</th>
+          <th class="text-right">Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="item in cart.items">
+          <td class="text-center">
+            <button type="button" ng-click="remove(item)">
+              <span class="fa fa-remove"></span>
+            </button>
+          </td>
+          <td>{{ item.product.title }}</td>
+          <td class="text-center">{{ item.quantity }}</td>
+          <td class="text-right">{{ item.product.price | currency }}</td>
+          <td class="text-right">{{ (item.quantity * item.product.price) | currency }}</td>
+        </tr>
+        <tr>
+          <td colspan="4" class="text-right"><h3>Total</h3></td>
+          <td class="text-right"><h3>{{ cart.total | currency }}</h3></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="row text-right" ng-hide="isEmpty">
+    <div class="col-md-12 col-xs-12 text-right">
+      <button type="button" class="btn btn-primary btn-lg">
+        <span class="fa fa-money"></span> Order Now
+      </button>
+    </div>
+  </div>
+</div>

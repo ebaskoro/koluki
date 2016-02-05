@@ -1,0 +1,64 @@
+//- index.jade
+
+extends _base
+
+block title
+  title Koluki
+
+block stylesheets
+  // build:css:prod css/index.min.css
+  // bower:css
+  // endbower
+  link(
+    rel="stylesheet"
+    href="css/imports.css"
+  )
+  link(
+    rel="stylesheet"
+    href="css/index.css"
+  )
+  // /build
+
+block content
+  nav.navbar.navbar-default.navbar-fixed-top.navbar-large
+    .container
+      .navbar-header
+        button.navbar-toggle.collapsed(
+          data-toggle="collapse"
+          data-target="#navbar"
+        )
+          span.sr-only
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+        a.navbar-brand(href="#")
+          img(
+            src="http://placehold.it/70x70"
+            alt="Logo"
+          )
+        p.navbar-text Koluki
+      #navbar.navbar-collapse.collapse
+        ul.nav.navbar-nav
+          li
+            a(href="shop.html") Shop
+  .container.container-main
+    .jumbotron
+      h1 Welcome
+      p A place to shop.
+      p
+        a.btn.btn-primary.btn-lg(href="shop.html")
+          span.fa.fa-shopping-bag
+          |  Shop Now
+    .row
+      .col-md-4.col-xs-12
+        h2 What is it?
+        p.lead A place to shop.
+        p Koluki stands for Koperasi Lumbung Kita.
+        p It is a co-op shop established by IMCV.
+
+block scripts
+  // build:js:prod js/index.min.js
+  // bower:js
+  // endbower
+  script(src="js/boot.js")
+  // /build

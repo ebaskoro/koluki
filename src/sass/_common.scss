@@ -1,0 +1,8 @@
+// _common.scss
+
+@mixin transition-all($delay) {
+  -moz-transition: all $delay ease;
+  -o-transition: all $delay ease;
+  -webkit-transition: all $delay ease;
+  transition: all $delay ease;
+}

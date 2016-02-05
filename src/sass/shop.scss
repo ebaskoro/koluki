@@ -1,0 +1,34 @@
+// shop.scss
+
+@import "reset";
+@import "common";
+@import "header";
+@import "footer";
+
+$header-min-height: 50px;
+
+.container-main {
+  margin: {
+    top: $header-min-height;
+  }
+}
+
+.toast-message {
+  font: {
+    size: 18px;
+  }
+}
+
+.toast-bottom-full-width {
+  bottom: 10px;
+}
+
+@media (min-width: 768px) {
+  $header-max-height: 100px;
+
+  .container-main {
+    margin: {
+      top: $header-max-height;
+    }
+  }
+}

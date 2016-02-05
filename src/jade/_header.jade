@@ -1,0 +1,28 @@
+//- _header.jade
+
+nav.navbar.navbar-default.navbar-fixed-top.navbar-large
+  .container
+    .navbar-header
+      button.navbar-toggle.collapsed(
+        data-toggle="collapse"
+        data-target="#navbar"
+      )
+        span.sr-only
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a.navbar-brand(href="index.html")
+        img(
+          src="http://placehold.it/70x70"
+          alt="Logo"
+        )
+      p.navbar-text Koluki
+    #navbar.navbar-collapse.collapse
+      ul.nav.navbar-nav
+        li.active
+          a(href="#/") Shop
+      ul.nav.navbar-nav.navbar-right(ng-controller="CartController")
+        li
+          a(href="#/cart")
+            span.fa.fa-shopping-cart
+            span.badge {{ cart.items.length }}
