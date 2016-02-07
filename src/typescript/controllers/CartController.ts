@@ -6,7 +6,7 @@
 /// <reference path="../_references.ts" />
 
 module IMCV.Koluki {
-    'use strict';
+    "use strict";
 
     /**
      * Cart controller.

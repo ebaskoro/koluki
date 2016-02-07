@@ -8,7 +8,7 @@
 /// <reference path="../../src/typescript/interfaces/ICartRepository.ts" />
 
 module IMCV.Koluki.Tests {
-    'use strict';
+    "use strict";
 
     import IRootScopeService = angular.IRootScopeService;
 
@@ -16,16 +16,10 @@ module IMCV.Koluki.Tests {
 
         beforeEach(angular.mock.module("shopApp"));
 
-        //var $scopeMock: ICartScope;
         var $scopeMock: any;
         var cartRepositoryMock: ICartRepository;
 
         beforeEach(inject(($rootScope: IRootScopeService) => {
-            /*$scopeMock = angular.extend({
-                cart: null,
-
-                isEmpty: false
-            }, $rootScope.$new());*/
             $scopeMock = $rootScope.$new();
 
             cartRepositoryMock = {

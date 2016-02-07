@@ -14,12 +14,25 @@ module IMCV.Koluki {
      */
     export class OrderController {
 
+        private _$scope: IOrderScope;
+
+        public static $inject = [
+            "$scope",
+            "CartRepository"
+        ];
+
         /**
-         * Creates an order controller.
+         * Creates an instance of order controller.
          *
          * @constructor
+         * @param $scope The order scope.
+         * @param cartRepository The cart repository.
          */
-        constructor() {
+        constructor($scope: IOrderScope, cartRepository: ICartRepository) {
+            this._$scope = $scope;
+
+            this._$scope.items = cartRepository.items;
+            this._$scope.total = cartRepository.total;
         }
 
     }

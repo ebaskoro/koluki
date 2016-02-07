@@ -33,6 +33,7 @@ module IMCV.Koluki {
     app.controller("PromotionController", PromotionController);
     app.controller("CategoryController", CategoryController);
     app.controller("CartController", CartController);
+    app.controller("OrderController", OrderController);
     app.controller("ShopHomeController", ShopHomeController);
     app.controller("ShopCategoryController", ShopCategoryController);
 

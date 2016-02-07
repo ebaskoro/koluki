@@ -6,7 +6,7 @@
 /// <reference path="_references.ts" />
 
 module IMCV.Koluki.Tests {
-    'use strict';
+    "use strict";
 
     import IHttpBackendService = angular.IHttpBackendService;
     import ILocationService = angular.ILocationService;
@@ -131,6 +131,25 @@ module IMCV.Koluki.Tests {
                 var actualController = $routeMock.current.controller;
 
                 expect(actualController).toBe(expectedController);
+            });
+
+        });
+
+        describe("when navigating to /order", () => {
+
+            beforeEach(inject(($httpBackend: IHttpBackendService) => {
+                $httpBackend.expectGET("").respond(200);
+
+                $locationMock.path("/order");
+                $rootScopeMock.$digest();
+            }));
+
+            it("should render views/shop/order.html", () => {
+                var expectedTemplateUrl = "views/shop/order.html";
+
+                var actualTemplateUrl = $routeMock.current.templateUrl;
+
+                expect(actualTemplateUrl).toBe(expectedTemplateUrl);
             });
 
         });

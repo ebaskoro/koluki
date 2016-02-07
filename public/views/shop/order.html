@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <h2>Order</h2>
+  </div>
+  <div class="row">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th class="text-center">Quantity</th>
+          <th class="text-right">Price</th>
+          <th class="text-right">Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="item in items">
+          <td>{{ item.product.title }}</td>
+          <td class="text-center">{{ item.quantity }}</td>
+          <td class="text-right">{{ item.product.price | currency }}</td>
+          <td class="text-right">{{ (item.quantity * item.product.price) | currency }}</td>
+        </tr>
+        <tr>
+          <td colspan="4" class="text-right"><h3>Total</h3></td>
+          <td class="text-right"><h3>{{ total | currency }}</h3></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,41 +1,6 @@
 <div class="container">
-  <!--<div class="media" ng-repeat="item in cart.items">
-    <div class="media-left">
-      <img src="http://placehold.it/24x24" alt="" class="media-object" />
-    </div>
-    <div class="media-body">
-      <h4>{{ item.product.title }}</h4>
-      <p>{{ item.product.description }}</p>
-    </div>
-    <div class="media-right">
-      <p>{{ item.quantity }}</p>
-    </div>
-  </div>-->
-  <!--<div class="row">
-    <h2>Shopping Cart</h2>
-  </div>
-  <div class="row" ng-repeat="item in cart.items">
-    <div class="col-md-4 col-xs-6">
-      <img src="http://placehold.it/32x32" alt="">
-      <h4>{{ item.product.title }}</h4>
-    </div>
-    <div class="col-md-1 col-xs-1">
-      <h4>{{ item.quantity }}</h4>
-    </div>
-    <div class="col-md-1 col-xs-1">
-      <h4>x</h4>
-    </div>
-    <div class="col-md-1 col-xs-1">
-      <h4>{{ item.product.price | currency }}</h4>
-    </div>
-  </div>-->
   <div class="row">
-    <h2>
-      <!--<a href="#/" class="btn btn-default">
-        <span class="fa fa-arrow-left"></span> back
-      </a>-->
-      Shopping Cart
-    </h2>
+    <h2>Shopping Cart</h2>
     <p>
       <a href="#/">
         <span class="fa fa-arrow-left"></span> back
@@ -75,9 +40,9 @@
   </div>
   <div class="row text-right" ng-hide="isEmpty">
     <div class="col-md-12 col-xs-12 text-right">
-      <button type="button" class="btn btn-primary btn-lg">
+      <a href="#/order" class="btn btn-primary btn-lg">
         <span class="fa fa-money"></span> Order Now
-      </button>
+      </a>
     </div>
   </div>
 </div>

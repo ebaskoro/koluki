@@ -6,7 +6,7 @@
 /// <reference path="../_references.ts" />
 
 module IMCV.Koluki {
-    'use strict';
+    "use strict";
 
     import IScope = angular.IScope;
 
@@ -17,7 +17,7 @@ module IMCV.Koluki {
     export interface ICartScope extends IScope {
 
         /**
-         * Gets or sets the shopping card.
+         * Gets or sets the shopping cart.
          *
          */
         cart: ICartRepository;
