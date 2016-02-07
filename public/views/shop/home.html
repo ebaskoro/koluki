@@ -18,10 +18,10 @@
   <div class="row text-center">
     <div class="col-md-3 col-xs-12"
          ng-repeat="category in categories">
-      <a ng-href="#/category/{{ category.id }}" ng-show="category.products.length > 0">
-        <h4>{{ category.title }} <span class="badge">{{ category.products.length }}</span></h4>
+      <a ng-href="#/category/{{ category.id }}" ng-show="category.productCount > 0">
+        <h4>{{ category.title }} <span class="badge">{{ category.productCount }}</span></h4>
       </a>
-      <div ng-show="category.products.length === 0">
+      <div ng-show="category.productCount === 0">
         <h4>{{ category.title }} <span class="badge">0</span></h4>
       </div>
     </div>

@@ -16,22 +16,28 @@ module IMCV.Koluki {
      */
     export class CategoryResourceFactory {
 
+        private static _url: string = "https://script.google.com/macros/s/AKfycbxjqIKwE-8b6rfpv6YzFZSeZLGkWo7O7dgYfYv5l75DE_XZxr_f/exec";
+
+
         /**
          * Creates a category resource.
          *
          * @param $resource The resource service.
          */
         public static Create($resource: IResourceService): ICategoryResource {
-            return $resource("", null, {
+            return $resource(CategoryResourceFactory._url, {
+                prefix: "JSON_CALLBACK"
+            }, {
                 query: {
-                    method: "GET",
-                    url: "api/categories.json",
+                    method: "JSONP",
                     isArray: true
                 },
 
                 get: {
-                    method: "GET",
-                    url: "api/category/:id.json"
+                    method: "JSONP",
+                    params: {
+                        id: "@id"
+                    }
                 }
             });
         }
