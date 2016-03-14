@@ -38,18 +38,6 @@ nav {
   color: white !important;
 }
 
-.navbar-nav {
-  .badge {
-    font: {
-      size: 12px;
-    }
-
-    margin: {
-      left: 5px;
-    }
-  }
-}
-
 .navbar-header {
   .navbar-text {
     font: {
@@ -83,7 +71,7 @@ nav {
     }
 
     text-transform: uppercase;
-    color: white !important;
+    color: white;
 
     margin: {
       top: -1px;
@@ -91,6 +79,22 @@ nav {
 
     > .fa {
       color: white;
+    }
+  }
+
+  li.active {
+    a {
+      color: grey;
+    }
+  }
+
+  .badge {
+    font: {
+      size: 12px;
+    }
+
+    margin: {
+      left: 5px;
     }
   }
 }
@@ -115,7 +119,7 @@ nav {
   }
 
   .navbar-nav {
-    li.active {
+    .active {
       border: {
         top: {
           color: white;
@@ -131,6 +135,8 @@ nav {
           image: none !important;
           color: transparent !important;
         }
+
+        color: white !important;
       }
 
       @include transition-all(0.5s);

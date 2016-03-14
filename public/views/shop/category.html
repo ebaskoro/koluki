@@ -1,19 +1,21 @@
-<div class="container">
+<div class="row" ng-if="vm.isLoading">
+  <div class="col-md-12 col-xs-12">
+    <uib-progressbar class="progress-striped active"></uib-progressbar>
+  </div>
+</div>
+<div class="container" ng-if="!vm.isLoading">
   <div class="row">
-    <h2>
-      <!--<a href="#/" class="btn btn-default">
-        <span class="fa fa-arrow-left"></span> back
-      </a>-->
-      {{ category.title }}
-    </h2>
-    <p>
-      <a href="#/">
-        <span class="fa fa-arrow-left"></span> back
-      </a>
-    </p>
+    <div class="col-md-12 col-xs-12">
+      <h2>{{ vm.category.title }}</h2>
+      <p>
+        <a href="#/">
+          <span class="fa fa-arrow-left"></span> back
+        </a>
+      </p>
+    </div>
   </div>
   <div class="row">
-    <div class="col-md-4 col-xs-12" ng-repeat="product in category.products">
+    <div class="col-md-4 col-xs-12" ng-repeat="product in vm.category.products">
       <div class="thumbnail">
         <img src="http://placehold.it/300x200" alt="product{{ product.id }}" />
         <div class="caption">
@@ -24,7 +26,7 @@
               <h4>{{ product.price | currency}} / {{ product.unit }}</h4>
             </div>
             <div class="col-md-5 col-xs-5 text-right">
-              <button class="btn btn-primary btn-lg" ng-click="buy(product)">
+              <button class="btn btn-primary btn-lg" ng-click="vm.buy(product)">
                 <span class="fa fa-cart-plus"></span> Buy
               </button>
             </div>

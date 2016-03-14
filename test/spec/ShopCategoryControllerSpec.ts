@@ -46,15 +46,10 @@ module IMCV.Koluki.Tests {
                     }
                 };
 
-                var target = new ShopCategoryController($routeParams, $scope, null, categoryRepositoryMock, null);
-                var actualCategory: Category = null;
-                $scope.category.$promise.then((category) => {
-                    actualCategory = category;
-                });
-                $scope.$apply();
-                var actualCategoryId = actualCategory.id;
+                var target = new ShopCategoryController($routeParams, null, categoryRepositoryMock, null);
+                var isLoading = target.isLoading;
 
-                expect(actualCategoryId).toBe(expectedCategoryId);
+                expect(isLoading).toBeTruthy();
             });
 
         });
@@ -88,9 +83,9 @@ module IMCV.Koluki.Tests {
                 spyOn(toasterMock, "info");
                 var product = new Product(1, "Title", "Description", 1.20, "Unit");
 
-                var target = new ShopCategoryController($routeParams, $scope, cartRepositoryMock,
-                    categoryRepositoryMock, toasterMock);
-                $scope.buy(product);
+                var target = new ShopCategoryController($routeParams, cartRepositoryMock, categoryRepositoryMock,
+                    toasterMock);
+                target.buy(product);
 
                 expect(cartRepositoryMock.addItem).toHaveBeenCalled();
                 expect(toasterMock.info).toHaveBeenCalled();

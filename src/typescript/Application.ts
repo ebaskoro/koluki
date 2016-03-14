@@ -37,4 +37,6 @@ module IMCV.Koluki {
     app.controller("ShopHomeController", ShopHomeController);
     app.controller("ShopCategoryController", ShopCategoryController);
 
+    app.directive("loading", ["$rootScope", ($rootScope) => { return new LoadingDirective($rootScope); }]);
+
 }

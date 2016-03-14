@@ -1,18 +1,21 @@
 <div class="container">
   <div class="row">
-    <h2>Order</h2>
+    <div class="col-md-12 col-xs-12">
+      <h2>Order</h2>
+    </div>
   </div>
   <div class="row">
-    <table class="table">
-      <thead>
+    <div class="col-md-12 col-xs-12">
+      <table class="table">
+        <thead>
         <tr>
           <th>Product</th>
           <th class="text-center">Quantity</th>
           <th class="text-right">Price</th>
           <th class="text-right">Total</th>
         </tr>
-      </thead>
-      <tbody>
+        </thead>
+        <tbody>
         <tr ng-repeat="item in items">
           <td>{{ item.product.title }}</td>
           <td class="text-center">{{ item.quantity }}</td>
@@ -20,10 +23,68 @@
           <td class="text-right">{{ (item.quantity * item.product.price) | currency }}</td>
         </tr>
         <tr>
-          <td colspan="4" class="text-right"><h3>Total</h3></td>
+          <td colspan="3" class="text-right"><h3>Total</h3></td>
           <td class="text-right"><h3>{{ total | currency }}</h3></td>
         </tr>
-      </tbody>
-    </table>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-7 col-xs-12">
+      <div class="form-group">
+        <label>Full Name <span class="glyphicon glyphicon-asterisk text-danger"></span></label>
+        <input type="text" class="form-control input-lg" />
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-5 col-xs-12">
+      <div class="form-group">
+        <label>Mobile Number <span class="glyphicon glyphicon-asterisk text-danger"></span></label>
+        <input type="text" class="form-control input-lg" />
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-7 col-xs-12">
+      <div class="form-group">
+        <label>Email Address <span class="glyphicon glyphicon-asterisk text-danger"></span></label>
+        <input type="text" class="form-control input-lg" />
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-7 col-xs-12">
+      <div class="form-group">
+        <label>Address <span class="glyphicon glyphicon-asterisk text-danger"></span></label>
+        <input type="text" class="form-control input-lg" />
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4 col-xs-8">
+      <div class="form-group">
+        <label>Suburb <span class="glyphicon glyphicon-asterisk text-danger"></span></label>
+        <select class="form-control input-lg">
+          <option value="None">Select</option>
+          <option value="Footscray">Footscray</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-md-4 col-xs-4">
+      <div class="form-group">
+        <label>Postcode <span class="glyphicon glyphicon-asterisk text-danger"></span></label>
+        <input type="text" class="form-control input-lg" />
+      </div>
+    </div>
+  </div>
+  <div class="row text-right">
+    <div class="col-md-12 col-xs-12 text-right">
+      <a href="#/" class="btn btn-default btn-lg">Cancel</a>
+      <a href="#/order" class="btn btn-primary btn-lg">
+        <span class="fa fa-ship"></span> Confirm
+      </a>
+    </div>
   </div>
 </div>

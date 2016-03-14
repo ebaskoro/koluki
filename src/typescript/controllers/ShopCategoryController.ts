@@ -16,15 +16,13 @@ module IMCV.Koluki {
      */
     export class ShopCategoryController {
 
-        private _$routeParams: IRouteParamService;
-        private _$scope: IShopCategoryScope;
         private _cartRepository: ICartRepository;
-        private _categoryRepository: ICategoryRepository;
         private _toaster: IToasterService;
+        private _loading: boolean;
+        private _category: Category;
 
         public static $inject = [
             "$routeParams",
-            "$scope",
             "CartRepository",
             "CategoryRepository",
             "toaster"
@@ -35,28 +33,58 @@ module IMCV.Koluki {
          *
          * @construct
          * @param $routeParams The route parameters.
-         * @param $scope The scope.
          * @param cartRepository The cart repository.
          * @param categoryRepository The category repository.
          * @param toaster The toaster service.
          */
-        constructor($routeParams: IRouteParamService, $scope: IShopCategoryScope, cartRepository: ICartRepository,
+        constructor($routeParams: IRouteParamService, cartRepository: ICartRepository,
             categoryRepository: ICategoryRepository, toaster: IToasterService) {
-            this._$routeParams = $routeParams;
-            this._$scope = $scope;
             this._cartRepository = cartRepository;
-            this._categoryRepository = categoryRepository;
             this._toaster = toaster;
+            this._loading = true;
 
-            var categoryId = this._$routeParams["category_id"];
-            this._$scope.category = this._categoryRepository.getCategoryById(categoryId);
+            var categoryId = $routeParams["category_id"];
+            categoryRepository.getCategoryById(categoryId).$promise
+                .then((category) => {
+                    this._category = category;
+                })
+                .catch(() => {
+                    this._category = null;
+                })
+                .finally(() => {
+                    this._loading = false;
+                })
+            ;
+        }
 
-            this._$scope.buy = (product) => {
-                this._cartRepository.addItem(product, 1);
-                this._toaster.info({
-                    body: product.title + " has been added"
-                });
-            };
+        /**
+         * Checks whether the category is being loaded or not.
+         *
+         * @returns {boolean} True when it is being loaded or false when it has been loaded.
+         */
+        public get isLoading(): boolean {
+            return this._loading;
+        }
+
+        /**
+         * Gets the category.
+         *
+         * @returns {Category} The category.
+         */
+        public get category(): Category {
+            return this._category;
+        }
+
+        /**
+         * Buys a product.
+         *
+         * @param {Product} product The product to be put into the shopping cart.
+         */
+        public buy(product: Product) {
+            this._cartRepository.addItem(product, 1);
+            this._toaster.info({
+                body: product.title + " has been added"
+            });
         }
 
     }

@@ -16,24 +16,22 @@ module IMCV.Koluki {
      */
     export class RouteConfig {
 
-        public static $inject = [
-            "$routeProvider"
-        ];
-
         /**
          * Configures route.
          *
-         * @param $routeProvider The route provider.
+         * @param {IRouteProvider} $routeProvider The route provider.
          */
         public static configure($routeProvider: IRouteProvider) {
             $routeProvider
                 .when("/", {
                     templateUrl: "views/shop/home.html",
-                    controller: ShopHomeController
+                    controller: ShopHomeController,
+                    controllerAs: "vm"
                 })
                 .when("/category/:category_id", {
                     templateUrl: "views/shop/category.html",
-                    controller: ShopCategoryController
+                    controller: ShopCategoryController,
+                    controllerAs: "vm"
                 })
                 .when("/cart", {
                     templateUrl: "views/shop/cart.html",

@@ -11,13 +11,18 @@
     </uib-carousel>
   </div>
 </div>
-<div class="container" ng-controller="CategoryController">
+<div class="container">
   <div class="row">
     <h2 class="text-center">Categories</h2>
   </div>
-  <div class="row text-center">
+  <div ng-if="vm.isLoading">
+    <div class="col-md-12 col-xs-12">
+      <uib-progressbar class="progress-striped active"></uib-progressbar>
+    </div>
+  </div>
+  <div class="row text-center" ng-if="!vm.isLoading">
     <div class="col-md-3 col-xs-12"
-         ng-repeat="category in categories">
+         ng-repeat="category in vm.categories">
       <a ng-href="#/category/{{ category.id }}" ng-show="category.productCount > 0">
         <h4>{{ category.title }} <span class="badge">{{ category.productCount }}</span></h4>
       </a>
