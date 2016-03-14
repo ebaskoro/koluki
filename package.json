@@ -4,7 +4,7 @@
   "description": "IMCV Koluki Web",
   "main": "index.js",
   "scripts": {
-    "test": "grunt test",
+    "test": "grunt test:unit",
     "build": "grunt build"
   },
   "author": "Eki Baskoro",
