@@ -1,5 +1,9 @@
 language: node_js
 node_js:
-  - "0.10"
+  - "stable"
 before_script:
+  - npm install bower -g
+  - bower install
+  - npm install tsd -g
+  - tsd install
   - npm install grunt-cli -g
