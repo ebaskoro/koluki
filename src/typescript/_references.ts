@@ -18,7 +18,6 @@
 /// <reference path="interfaces/IPromotionScope.ts" />
 /// <reference path="interfaces/ICategoryScope.ts" />
 /// <reference path="interfaces/ICartScope.ts" />
-/// <reference path="interfaces/IShopCategoryScope.ts" />
 /// <reference path="interfaces/IOrderScope.ts" />
 /// <reference path="interfaces/ILoadingScope.ts" />
 /// <reference path="interfaces/ICartRepository.ts" />
