@@ -4,7 +4,7 @@
  */
 
 module IMCV.Koluki {
-    'use strict';
+    "use strict";
 
     /**
      * Product.
@@ -17,23 +17,26 @@ module IMCV.Koluki {
         private _description: string;
         private _price: number;
         private _unit: string;
+        private _imageUrl: string;
 
         /**
          * Creates a product.
          *
          * @constructor
-         * @param id The product ID.
-         * @param title The product's title.
-         * @param description The product's description.
-         * @param price The product's unit price.
-         * @param unit The product's unit.
+         * @param {number} id The product ID.
+         * @param {string} title The product's title.
+         * @param {string} description The product's description.
+         * @param {number} price The product's unit price.
+         * @param {string} unit The product's unit.
+         * @param {string} imageUrl The product's image URL.
          */
-        constructor(id: number, title: string, description: string, price: number, unit: string) {
+        constructor(id: number, title: string, description: string, price: number, unit: string, imageUrl: string) {
             this._id = id;
             this._title = title;
             this._description = description;
             this._price = price;
             this._unit = unit;
+            this._imageUrl = imageUrl;
         }
 
         /**
@@ -57,7 +60,7 @@ module IMCV.Koluki {
         /**
          * Sets the title.
          *
-         * @param newTitle The new title.
+         * @param {string} newTitle The new title.
          */
         public set title(newTitle: string) {
             this._title = newTitle;
@@ -75,7 +78,7 @@ module IMCV.Koluki {
         /**
          * Sets the description.
          *
-         * @param newDescription
+         * @param {string} newDescription The new description.
          */
         public set description(newDescription: string) {
             this._description = newDescription;
@@ -97,6 +100,15 @@ module IMCV.Koluki {
          */
         public get unit(): string {
             return this._unit;
+        }
+
+        /**
+         * Gets the image URL.
+         *
+         * @returns {string}
+         */
+        public get imageUrl(): string {
+            return this._imageUrl;
         }
 
     }

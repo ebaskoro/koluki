@@ -7,7 +7,7 @@
 /// <reference path="../../src/typescript/services/CartRepository.ts" />
 
 module IMCV.Koluki.Tests {
-    'use strict';
+    "use strict";
 
     describe("CartRepository", () => {
 
@@ -35,7 +35,7 @@ module IMCV.Koluki.Tests {
             var expectedProduct: Product;
 
             beforeEach(() => {
-                expectedProduct = new Product(1, "Title", "Description", 1.20, "Unit");
+                expectedProduct = new Product(1, "Title", "Description", 1.20, "Unit", "");
             });
 
             it("should add a new product to item collections", () => {
@@ -72,7 +72,7 @@ module IMCV.Koluki.Tests {
 
             it("should remove the existing product from item collections", () => {
                 var expectedItemsLength = 0;
-                var product = new Product(1, "Title", "Description", 1.20, "Unit");
+                var product = new Product(1, "Title", "Description", 1.20, "Unit", "");
 
                 var target = new CartRepository();
                 target.addItem(product, 1);

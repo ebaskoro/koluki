@@ -11,14 +11,16 @@
     </uib-carousel>
   </div>
 </div>
-<div class="container">
+<div class="container" ng-if="vm.isLoading">
+  <div class="row">
+    <div class="col-md-12 col-xs-12">
+      <h2 class="text-center">Loading categories <i class="fa fa-spinner fa-spin"></i></h2>
+    </div>
+  </div>
+</div>
+<div class="container" ng-if="!vm.isLoading">
   <div class="row">
     <h2 class="text-center">Categories</h2>
-  </div>
-  <div ng-if="vm.isLoading">
-    <div class="col-md-12 col-xs-12">
-      <uib-progressbar class="progress-striped active"></uib-progressbar>
-    </div>
   </div>
   <div class="row text-center" ng-if="!vm.isLoading">
     <div class="col-md-3 col-xs-12"

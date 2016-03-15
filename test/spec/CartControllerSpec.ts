@@ -56,7 +56,7 @@ module IMCV.Koluki.Tests {
 
             it("should not be empty", () => {
                 var expectedEmpty = false;
-                var product = new Product(1, "Title", "Description", 1.00, "Unit");
+                var product = new Product(1, "Title", "Description", 1.00, "Unit", "");
 
                 var target = new CartController($scopeMock, cartRepositoryMock);
                 cartRepositoryMock.items.push(new CartItem(product, 1));
@@ -73,7 +73,7 @@ module IMCV.Koluki.Tests {
 
             it("should be empty", () => {
                 var expectedEmpty = true;
-                var product = new Product(1, "Title", "Description", 1.00, "Unit");
+                var product = new Product(1, "Title", "Description", 1.00, "Unit", "");
 
                 var target = new CartController($scopeMock, cartRepositoryMock);
                 cartRepositoryMock.items.push(new CartItem(product, 1));

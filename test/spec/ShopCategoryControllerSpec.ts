@@ -81,7 +81,7 @@ module IMCV.Koluki.Tests {
                     }
                 };
                 spyOn(toasterMock, "info");
-                var product = new Product(1, "Title", "Description", 1.20, "Unit");
+                var product = new Product(1, "Title", "Description", 1.20, "Unit", "");
 
                 var target = new ShopCategoryController($routeParams, cartRepositoryMock, categoryRepositoryMock,
                     toasterMock);

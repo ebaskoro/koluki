@@ -6,6 +6,9 @@
 @import "footer";
 
 $header-min-height: 50px;
+$thumbnail-max-width: 300px;
+$thumbnail-max-height: 200px;
+$thumbnail-top-padding: 4px;
 
 .container-main {
   margin: {
@@ -21,6 +24,17 @@ $header-min-height: 50px;
 
 .toast-bottom-full-width {
   bottom: 10px;
+}
+
+.thumbnail {
+  padding-top: $thumbnail-top-padding;
+  padding-bottom: 0;
+
+  > img {
+    max: {
+      height: $thumbnail-max-height - $thumbnail-top-padding;
+    }
+  }
 }
 
 @media (min-width: 768px) {
