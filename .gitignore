@@ -5,7 +5,6 @@
 /node_modules
 /typings
 /npm-debug.log
-/test/e2e/conf.coffee
 /test/e2e/result
 /test/spec/specs.js
 /test/spec/result.html
