@@ -28,6 +28,8 @@ module IMCV.Koluki {
     app.factory("CartRepository", () => { return new CartRepository(); });
     app.factory("CategoryResource", ["$resource", CategoryResourceFactory.Create]);
     app.factory("CategoryRepository", ["CategoryResource", (categoryResource) => { return new CategoryRepository(categoryResource); }]);
+    app.factory("PromotionResource", ["$resource", PromotionResourceFactory.Create]);
+    app.factory("PromotionRepository", ["PromotionResource", (promotionResource) => { return new PromotionRepository(promotionResource); }]);
 
     app.controller("ApplicationController", ApplicationController);
     app.controller("PromotionController", PromotionController);

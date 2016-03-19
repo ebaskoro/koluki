@@ -16,7 +16,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="item in items">
+        <tr ng-repeat="item in vm.items">
           <td>{{ item.product.title }}</td>
           <td class="text-center">{{ item.quantity }}</td>
           <td class="text-right">{{ item.product.price | currency }}</td>
@@ -24,7 +24,7 @@
         </tr>
         <tr>
           <td colspan="3" class="text-right"><h3>Total</h3></td>
-          <td class="text-right"><h3>{{ total | currency }}</h3></td>
+          <td class="text-right"><h3>{{ vm.total | currency }}</h3></td>
         </tr>
         </tbody>
       </table>
@@ -63,19 +63,13 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-md-4 col-xs-8">
+    <div class="col-md-8 col-xs-8">
       <div class="form-group">
         <label>Suburb <span class="glyphicon glyphicon-asterisk text-danger"></span></label>
         <select class="form-control input-lg">
           <option value="None">Select</option>
           <option value="Footscray">Footscray</option>
         </select>
-      </div>
-    </div>
-    <div class="col-md-4 col-xs-4">
-      <div class="form-group">
-        <label>Postcode <span class="glyphicon glyphicon-asterisk text-danger"></span></label>
-        <input type="text" class="form-control input-lg" />
       </div>
     </div>
   </div>

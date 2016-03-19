@@ -39,7 +39,8 @@ module IMCV.Koluki {
                 })
                 .when("/order", {
                     templateUrl: "views/shop/order.html",
-                    controller: OrderController
+                    controller: OrderController,
+                    controllerAs: "vm"
                 })
                 .otherwise({
                     redirectTo: "/"

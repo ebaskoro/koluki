@@ -10,11 +10,20 @@
 module IMCV.Koluki.Tests {
     'use strict';
 
+    import IQService = angular.IQService;
     import IRootScopeService = angular.IRootScopeService;
 
     describe("PromotionController", () => {
 
         beforeEach(angular.mock.module("shopApp"));
+
+        var $rootScopeMock: IRootScopeService;
+        var $qMock: IQService;
+
+        beforeEach(inject(($rootScope: IRootScopeService, $q: IQService) => {
+            $rootScopeMock = $rootScope;
+            $qMock = $q;
+        }));
 
         describe("when constructed", () => {
 
@@ -28,18 +37,30 @@ module IMCV.Koluki.Tests {
                     $scopeMock = $rootScope.$new();
                 });
 
-                var target = new PromotionController($scopeMock);
+                var promotionRepositoryMock: any = {
+                    getAllPromotions() {
+                        var deferred = $qMock.defer();
+                        deferred.resolve([]);
 
-                var actualInterval = $scopeMock.interval;
-                var actualNoWrapSlides = $scopeMock.noWrapSlides;
-                var actualSlides = $scopeMock.slides;
+                        return {
+                            $promise: deferred.promise
+                        };
+                    }
+                };
+
+                var target = new PromotionController(promotionRepositoryMock);
+                $rootScopeMock.$digest();
+
+                var actualInterval = target.interval;
+                var actualNoWrapSlides = target.noWrapSlides;
+                var actualSlides = target.slides;
 
                 expect(actualInterval).toBeDefined();
                 expect(actualInterval).toBe(expectedInterval);
                 expect(actualNoWrapSlides).toBeDefined();
                 expect(actualNoWrapSlides).toBe(expectedNoWrapSlides);
                 expect(actualSlides).toBeDefined();
-                expect(actualSlides.length).toBe(2);
+                expect(actualSlides.length).toBe(0);
             });
 
         });

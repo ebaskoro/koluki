@@ -36,15 +36,17 @@ module IMCV.Koluki.Tests {
         describe("when constructed", () => {
 
             it("should initialise correctly", () => {
+                var expectedItemCount = 0;
                 var expectedTotal = 0;
 
-                var target = new OrderController($scopeMock, cartRepositoryMock);
+                var target = new OrderController(cartRepositoryMock);
 
-                var actualItems = $scopeMock.items;
-                var actualTotal = $scopeMock.total;
+                var actualItems = target.items;
+                var actualItemCount = actualItems.length;
+                var actualTotal = target.total;
 
-                expect(target).not.toBeNull();
                 expect(actualItems).toBeDefined();
+                expect(actualItemCount).toBe(expectedItemCount);
                 expect(actualTotal).toBeDefined();
                 expect(actualTotal).toBe(expectedTotal);
             });

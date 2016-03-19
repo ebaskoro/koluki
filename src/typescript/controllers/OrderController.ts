@@ -14,10 +14,9 @@ module IMCV.Koluki {
      */
     export class OrderController {
 
-        private _$scope: IOrderScope;
+        private _cartRepository: ICartRepository;
 
         public static $inject = [
-            "$scope",
             "CartRepository"
         ];
 
@@ -25,14 +24,20 @@ module IMCV.Koluki {
          * Creates an instance of order controller.
          *
          * @constructor
-         * @param $scope The order scope.
          * @param cartRepository The cart repository.
          */
-        constructor($scope: IOrderScope, cartRepository: ICartRepository) {
-            this._$scope = $scope;
+        constructor(cartRepository: ICartRepository) {
+            this._cartRepository = cartRepository;
 
-            this._$scope.items = cartRepository.items;
-            this._$scope.total = cartRepository.total;
+            // TODO: Add delivery surcharge
+        }
+
+        public get items(): CartItem[] {
+            return this._cartRepository.items;
+        }
+
+        public get total(): number {
+            return this._cartRepository.total;
         }
 
     }

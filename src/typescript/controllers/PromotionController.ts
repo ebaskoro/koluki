@@ -6,7 +6,7 @@
 /// <reference path="../_references.ts" />
 
 module IMCV.Koluki {
-    'use strict';
+    "use strict";
 
     /**
      * Promotion controller.
@@ -14,35 +14,48 @@ module IMCV.Koluki {
      */
     export class PromotionController {
 
-        private _$scope: IPromotionScope;
+        private _promotionRepository: IPromotionRepository;
+        private _loading: boolean;
+        private _promotions: any;
 
         public static $inject = [
-            "$scope"
+            "PromotionRepository"
         ];
 
         /**
          * Creates a promotion controller.
          *
          * @constructor
-         * @param $scope The promotion scope.
+         * @param {IPromotionRepository} promotionRepository Promotion repository.
          */
-        constructor($scope: IPromotionScope) {
-            this._$scope = $scope;
+        constructor(promotionRepository: IPromotionRepository) {
+            this._promotionRepository = promotionRepository;
+            this._loading = true;
 
-            this._$scope.interval = 5000;
-            this._$scope.noWrapSlides = false;
-            this._$scope.slides = [
-                {
-                    imageUrl: "http://placehold.it/600x400",
-                    title: "Bakso",
-                    description: "Bakso special"
-                },
-                {
-                    imageUrl: "http://placehold.it/600x400",
-                    title: "Kerupuk Singkong",
-                    description: "Kerupuk singkong nikmat"
-                }
-            ];
+            promotionRepository.getAllPromotions().$promise
+                .then((promotions) => {
+                    this._promotions = promotions;
+                })
+                .finally(() => {
+                    this._loading = false;
+                })
+            ;
+        }
+
+        public get isLoading() {
+            return this._loading;
+        }
+
+        public get interval() {
+            return 5000;
+        }
+
+        public get noWrapSlides() {
+            return false;
+        }
+
+        public get slides() {
+            return this._promotions;
         }
 
     }
