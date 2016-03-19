@@ -160,6 +160,12 @@ module.exports = (grunt) ->
       e2e:
         configFile: 'test/e2e/conf.coffee'
 
+    connect:
+      server:
+        options:
+          port: 9001
+          base: 'public'
+
     rsync:
       options:
         ssh: true
@@ -255,6 +261,7 @@ module.exports = (grunt) ->
   grunt.registerTask 'test:e2e', [
     'build'
     'typescript:test'
+    'connect'
     'protractor'
   ]
 
@@ -262,6 +269,7 @@ module.exports = (grunt) ->
     'build'
     'typescript:test'
     'jasmine'
+    'connect'
     'protractor'
   ]
 
