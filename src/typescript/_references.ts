@@ -31,6 +31,7 @@
 /// <reference path="services/PromotionRepository.ts" />
 /// <reference path="services/CategoryResourceFactory.ts" />
 /// <reference path="services/PromotionResourceFactory.ts" />
+/// <reference path="services/OrderService.ts" />
 /// <reference path="controllers/PromotionController.ts" />
 /// <reference path="controllers/CategoryController.ts" />
 /// <reference path="controllers/CartController.ts" />

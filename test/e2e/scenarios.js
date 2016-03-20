@@ -91,4 +91,36 @@ describe('ShopApp', function () {
 
     });
 
+    describe('when navigating to shopping cart', function () {
+
+        beforeEach(function () {
+            browser.get('shop.html#/cart');
+        });
+
+        it('should render the correct view', function () {
+            var expectedText = /Shopping Cart/;
+
+            var actualText = element(by.css('h2')).getText();
+
+            expect(actualText).toMatch(expectedText);
+        });
+
+    });
+
+    describe('when navigating to order', function () {
+
+        beforeEach(function () {
+            browser.get('shop.html#/order');
+        });
+
+        it('should render the correct view', function () {
+            var expectedText = /Order/;
+
+            var actualText = element(by.css('h2')).getText();
+
+            expect(actualText).toMatch(expectedText);
+        });
+
+    });
+
 });

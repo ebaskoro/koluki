@@ -1,10 +1,5 @@
 <div class="container-fluid" ng-controller="PromotionController as promo">
   <div class="row" ng-if="promo.isLoading">
-    <!--<uib-carousel>
-      <uib-slide>
-        <img ng-src="http://placehold.it/600x400" alt="Loading" style="margin: auto;" />
-      </uib-slide>
-    </uib-carousel>-->
     <div class="row">
       <div class="col-md-12 col-xs-12">
         <h2 class="text-center">Loading promotions <i class="fa fa-spinner fa-spin"></i></h2>
@@ -14,7 +9,7 @@
   <div class="row" ng-if="!promo.isLoading">
     <uib-carousel interval="promo.interval">
       <uib-slide ng-repeat="slide in promo.slides" active="slide.active">
-        <img ng-src="{{ slide.imageUrl }}" alt="{{ slide.imageUrl }}" style="margin: auto;" />
+        <img src="http://placehold.it/600x400" ng-src="{{ slide.imageUrl }}" alt="{{ slide.imageUrl }}" style="margin: auto;" />
         <div class="carousel-caption">
           <h4>{{ slide.title }}</h4>
           <p>{{ slide.description }}</p>
