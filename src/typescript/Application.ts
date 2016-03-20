@@ -30,6 +30,7 @@ module IMCV.Koluki {
     app.factory("CategoryRepository", ["CategoryResource", (categoryResource) => { return new CategoryRepository(categoryResource); }]);
     app.factory("PromotionResource", ["$resource", PromotionResourceFactory.Create]);
     app.factory("PromotionRepository", ["PromotionResource", (promotionResource) => { return new PromotionRepository(promotionResource); }]);
+    app.factory("OrderService", ["$q", "$http", ($q, $http) => { return new OrderService($q, $http) }]);
 
     app.controller("ApplicationController", ApplicationController);
     app.controller("PromotionController", PromotionController);

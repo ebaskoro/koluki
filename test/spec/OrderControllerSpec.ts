@@ -39,7 +39,7 @@ module IMCV.Koluki.Tests {
                 var expectedItemCount = 0;
                 var expectedTotal = 0;
 
-                var target = new OrderController(cartRepositoryMock);
+                var target = new OrderController(cartRepositoryMock, null, null, null);
 
                 var actualItems = target.items;
                 var actualItemCount = actualItems.length;
