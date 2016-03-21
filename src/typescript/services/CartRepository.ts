@@ -1,12 +1,12 @@
 /**
- * Cart.ts
+ * CartRepository.ts
  *
  */
 
 /// <reference path="../_references.ts" />
 
 module IMCV.Koluki {
-    'use strict';
+    "use strict";
 
     /**
      * Cart repository.
@@ -37,6 +37,10 @@ module IMCV.Koluki {
             }
 
             return total;
+        }
+
+        public get isEmpty(): boolean {
+            return (this.total === 0);
         }
 
         public addItem(product: Product, quantity: number) {

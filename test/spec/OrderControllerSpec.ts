@@ -27,6 +27,8 @@ module IMCV.Koluki.Tests {
 
                 total: 0,
 
+                isEmpty: true,
+
                 addItem() {},
 
                 removeItem() {}

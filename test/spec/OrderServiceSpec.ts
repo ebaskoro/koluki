@@ -8,7 +8,7 @@
 /// <reference path="../../src/typescript/models/OrderRequest.ts" />
 /// <reference path="../../src/typescript/models/OrderResponse.ts" />
 
-module IMCV.Koluki.Test {
+module IMCV.Koluki.Tests {
     "use strict";
 
     import IHttpBackendService = angular.IHttpBackendService;

@@ -6,7 +6,7 @@
 /// <reference path="../_references.ts" />
 
 module IMCV.Koluki {
-    'use strict';
+    "use strict";
 
     /**
      * Cart repository.
@@ -27,6 +27,13 @@ module IMCV.Koluki {
          * @returns {number}
          */
         total: number;
+
+        /**
+         * Checks whether the cart is empty or not.
+         *
+         * @returns {boolean} True when the cart is empty or false otherwise.
+         */
+        isEmpty: boolean;
 
         /**
          * Adds a product to the cart.
