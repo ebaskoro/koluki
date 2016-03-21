@@ -6,7 +6,15 @@
   </div>
   <div class="row">
     <div class="col-md-12 col-xs-12">
-      <p>Your order has been submitted. Please transfer your payment.</p>
+      <p>Dear {{ vm.fullName }}, your order has been submitted. An email confirming your order has been sent to your email address. Below is the order reference:</p>
+      <h3>{{ vm.reference }}</h3>
+      <p>Please transfer your payment to IMCV Koluki Bank account as detailed below:</p>
+      <p>Bank: National Bank</p>
+      <p>BSB Number: xxx-xxx</p>
+      <p>Account Number: xxxxxx</p>
+      <p>Reference: <b>{{ vm.reference }}</b></p>
+      <p>Amount: <b>{{ vm.totalPayable | currency }}</b></p>
+      <p>Jazakumullah. Wassalaamu 'alaikum.</p>
     </div>
   </div>
 </div>

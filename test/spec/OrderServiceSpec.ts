@@ -40,21 +40,31 @@ module IMCV.Koluki.Tests {
         describe("when order is invoked", () => {
 
             it("should submit the order", () => {
+                var expectedResultCode = 0;
                 var expectedReference = "AAA";
+                var expectedTotalPayable = 12.00;
                 $httpBackendMock.expectJSONP("").respond(200, {
-                    reference: expectedReference
+                    resultCode: expectedResultCode,
+                    reference: expectedReference,
+                    totalPayable: expectedTotalPayable
                 });
 
                 var target = new OrderService($qMock, $httpMock);
+                var actualResultCode = 0;
                 var actualReference = null;
+                var actualTotalPayable = 0;
                 target.order(null)
                     .then((actual) => {
+                        actualResultCode = actual.resultCode;
                         actualReference = actual.reference;
+                        actualTotalPayable = actual.totalPayable;
                     })
                 ;
                 $httpBackendMock.flush();
 
+                expect(actualResultCode).toBe(expectedResultCode);
                 expect(actualReference).toBe(expectedReference);
+                expect(actualTotalPayable).toBe(expectedTotalPayable);
             });
 
         });

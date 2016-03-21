@@ -52,14 +52,15 @@ module IMCV.Koluki {
             this._$http
                 .jsonp(OrderService._url + "?prefix=JSON_CALLBACK&data=" + parameters)
                 .success((result: any) => {
-                    console.log(result);
+                    var resultCode = result.resultCode;
                     var reference = result.reference;
-                    var response = new OrderResponse(reference);
+                    var totalPayable = result.totalPayable;
+                    var response = new OrderResponse(resultCode, reference, totalPayable);
                     deferred.resolve(response);
                 })
-                .error((error) => {
-                    console.log(error);
-                    deferred.reject();
+                .error(() => {
+                    var response = new OrderResponse(-99);
+                    deferred.reject(response);
                 })
             ;
 

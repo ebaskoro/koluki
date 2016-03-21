@@ -66,6 +66,10 @@ module IMCV.Koluki {
             }
         }
 
+        public clear() {
+            this._items = [];
+        }
+
     }
 
 }

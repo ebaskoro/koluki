@@ -50,6 +50,12 @@ module IMCV.Koluki {
          */
         removeItem(product: Product);
 
+        /**
+         * Removes all items in the cart.
+         *
+         */
+        clear();
+
     }
 
 }

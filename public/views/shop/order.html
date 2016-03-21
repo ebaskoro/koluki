@@ -22,6 +22,11 @@
           <td class="text-right">{{ item.product.price | currency }}</td>
           <td class="text-right">{{ (item.quantity * item.product.price) | currency }}</td>
         </tr>
+        <tr ng-repeat="surcharge in vm.surcharges">
+          <td colspan="2">{{ surcharge.product.title }}</td>
+          <td class="text-right">{{ surcharge.product.price | currency }}</td>
+          <td class="text-right">{{ (surcharge.quantity * surcharge.product.price) | currency }}</td>
+        </tr>
         <tr>
           <td colspan="3" class="text-right"><h3>Total</h3></td>
           <td class="text-right"><h3>{{ vm.total | currency }}</h3></td>
@@ -67,7 +72,7 @@
       <div class="form-group">
         <label>Suburb <span class="glyphicon glyphicon-asterisk text-danger"></span></label>
         <select class="form-control input-lg" ng-model="vm.form.suburb" required>
-          <option value="None">Select</option>
+          <option value="" selected>Select</option>
           <option value="Footscray">Footscray</option>
         </select>
       </div>
@@ -82,3 +87,4 @@
     </div>
   </div>
 </div>
+<toaster-container></toaster-container>

@@ -14,12 +14,17 @@ module IMCV.Koluki.Tests {
         describe("when constructed", () => {
 
             it("should initialise correctly", () => {
-                var expectedReference = "ABC123";
+                var expectedResultCode = 0;
 
-                var target = new OrderResponse(expectedReference);
+                var target = new OrderResponse(expectedResultCode);
+
+                var actualResultCode = target.resultCode;
                 var actualReference = target.reference;
+                var actualTotalPayable = target.totalPayable;
 
-                expect(actualReference).toBe(expectedReference);
+                expect(actualResultCode).toBe(expectedResultCode);
+                expect(actualReference).toBeUndefined();
+                expect(actualTotalPayable).toBeUndefined();
             });
 
         });

@@ -33,6 +33,9 @@ module IMCV.Koluki.Tests {
                 },
 
                 removeItem(product: Product) {
+                },
+
+                clear() {
                 }
             };
         }));
