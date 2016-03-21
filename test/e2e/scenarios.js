@@ -110,11 +110,14 @@ describe('ShopApp', function () {
     describe('when navigating to order', function () {
 
         beforeEach(function () {
+            browser.get('shop.html#/category/1');
+            element(by.repeater('product in vm.category.products').row(0)).$('button').click();
             browser.get('shop.html#/order');
         });
 
         it('should render the correct view', function () {
-            var expectedText = /Order/;
+            //var expectedText = /Order/;
+            var expectedText = /Shopping Cart/;
 
             var actualText = element(by.css('h2')).getText();
 
