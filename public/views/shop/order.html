@@ -22,10 +22,10 @@
           <td class="text-right">{{ item.product.price | currency }}</td>
           <td class="text-right">{{ (item.quantity * item.product.price) | currency }}</td>
         </tr>
-        <tr ng-repeat="surcharge in vm.surcharges">
-          <td colspan="2">{{ surcharge.product.title }}</td>
-          <td class="text-right">{{ surcharge.product.price | currency }}</td>
-          <td class="text-right">{{ (surcharge.quantity * surcharge.product.price) | currency }}</td>
+        <tr ng-if="vm.surcharges.length" ng-repeat="surcharge in vm.surcharges">
+          <td colspan="2">{{ surcharge.name }}</td>
+          <td class="text-right">{{ surcharge.price | currency }}</td>
+          <td class="text-right">{{ surcharge.price | currency }}</td>
         </tr>
         <tr>
           <td colspan="3" class="text-right"><h3>Total</h3></td>

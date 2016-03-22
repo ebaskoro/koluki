@@ -20,17 +20,19 @@ module IMCV.Koluki {
     export class OrderController {
 
         private _cartRepository: ICartRepository;
+        private _surchargeRepository: ISurchargeRepository;
         private _orderService: IOrderService;
         private _orderRepository: IOrderRepository;
         private _$uibModal: IModalService;
         private _$location: ILocationService;
         private _toaster: IToasterService;
-        private _surcharges: CartItem[];
+        private _surcharges: Surcharge[];
         private _orderRequest: OrderRequest;
         private _modal: IModalServiceInstance;
 
         public static $inject = [
             "CartRepository",
+            "SurchargeRepository",
             "OrderService",
             "OrderRepository",
             "$uibModal",
@@ -42,16 +44,19 @@ module IMCV.Koluki {
          * Creates an instance of order controller.
          *
          * @constructor
-         * @param cartRepository Cart repository.
-         * @param orderService Order service to use.
+         * @param {ICartRepository} cartRepository Cart repository.
+         * @param {ISurchargeRepository} surchargeRepository Surcharge repository.
+         * @param {IOrderService} orderService Order service to use.
          * @param {OrderRepository} orderRepository Order repository.
-         * @param $uibModal The modal service.
+         * @param {IModalService} $uibModal Modal service.
          * @param {ILocationService} $location Location service.
          * @param {IToasterService} toaster Toaster service.
          */
-        constructor(cartRepository: ICartRepository, orderService: IOrderService, orderRepository: IOrderRepository,
-            $uibModal: IModalService, $location: ILocationService, toaster: IToasterService) {
+        constructor(cartRepository: ICartRepository, surchargeRepository: ISurchargeRepository,
+            orderService: IOrderService, orderRepository: IOrderRepository, $uibModal: IModalService,
+            $location: ILocationService, toaster: IToasterService) {
             this._cartRepository = cartRepository;
+            this._surchargeRepository = surchargeRepository;
             this._orderService = orderService;
 
             this._orderRepository = orderRepository;
@@ -62,11 +67,20 @@ module IMCV.Koluki {
             this._toaster = toaster;
 
             this._surcharges = [];
-            this._surcharges.push(new CartItem(new Product(1, "Delivery", "Delivery Surcharge", 5, "", ""), 1));
+            surchargeRepository.getDeliverySurchargeBySuburb("").$promise
+                .then((result: any) => {
+                    if (result.resultCode === 0) {
+                        var id = result.surcharge.id;
+                        var name = result.surcharge.name;
+                        var price = result.surcharge.price;
+                        var surcharge = new Surcharge(id, name, price);
+                        this._surcharges.push(surcharge);
+                    }
+                })
+            ;
 
             this._orderRequest = new OrderRequest();
             this._modal = null;
-            // TODO: Add delivery surcharge
 
             if (cartRepository.isEmpty) {
                 $location.path("/cart");
@@ -77,13 +91,18 @@ module IMCV.Koluki {
             return this._cartRepository.items;
         }
 
-        public get surcharges(): CartItem[] {
+        public get surcharges(): Surcharge[] {
             return this._surcharges;
         }
 
         public get total(): number {
-            var totalSurcharges = this._surcharges[0].product.price * this._surcharges[0].quantity;
-            return (this._cartRepository.total + totalSurcharges);
+            if (this._surcharges.length) {
+                var totalSurcharges = this._surcharges[0].price;
+                return (this._cartRepository.total + totalSurcharges);
+            }
+            else {
+                return this._cartRepository.total;
+            }
         }
 
         public get form(): any {
@@ -106,7 +125,18 @@ module IMCV.Koluki {
                 });
             }
 
-            this._orderRequest.totalPayable = this._cartRepository.total;
+            this._orderRequest.surcharges = [];
+
+            for (let surcharge of this._surcharges) {
+                this._orderRequest.surcharges.push({
+                    surchargeId: surcharge.id,
+                    quantity: 1,
+                    price: surcharge.price,
+                    total: surcharge.price
+                });
+            }
+
+            this._orderRequest.totalPayable = this.total;
 
             this._modal = this._$uibModal.open({
                 templateUrl: "views/common/ordering.html"

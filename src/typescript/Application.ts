@@ -30,6 +30,8 @@ module IMCV.Koluki {
     app.factory("CategoryRepository", ["CategoryResource", (categoryResource) => { return new CategoryRepository(categoryResource); }]);
     app.factory("PromotionResource", ["$resource", PromotionResourceFactory.Create]);
     app.factory("PromotionRepository", ["PromotionResource", (promotionResource) => { return new PromotionRepository(promotionResource); }]);
+    app.factory("SurchargeResource", ["$resource", SurchargeResourceFactory.Create]);
+    app.factory("SurchargeRepository", ["SurchargeResource", (surchargeResource) => { return new SurchargeRepository(surchargeResource); }]);
     app.factory("OrderRepository", () => { return new OrderRepository(); });
     app.factory("OrderService", ["$q", "$http", ($q, $http) => { return new OrderService($q, $http) }]);
 
