@@ -195,7 +195,7 @@ module.exports = (grunt) ->
       prod:
         options:
           src: 'public/'
-          dest: '~/public_html/koluki_uat'
+          dest: '~/public_html/koluki'
           host: 'imcv1@imcv.org.au'
           delete: true
 
@@ -289,5 +289,6 @@ module.exports = (grunt) ->
   ]
 
   grunt.registerTask 'default', [
-    'test'
+    'build'
+    'connect'
   ]
