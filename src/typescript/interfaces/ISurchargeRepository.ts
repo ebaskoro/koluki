@@ -17,12 +17,13 @@ module IMCV.Koluki {
     export interface ISurchargeRepository {
 
         /**
-         * Gets delivery surcharge by suburb.
+         * Gets delivery surcharge.
          *
          * @param {string} suburb Suburb to deliver to.
+         * @param {number} totalPayable Total order before surcharges.
          * @returns Applicable delivery surcharge.
          */
-        getDeliverySurchargeBySuburb(suburb: string): IResource<Surcharge>;
+        getDeliverySurcharge(suburb: string, totalPayable: number): IResource<Surcharge>;
 
     }
 

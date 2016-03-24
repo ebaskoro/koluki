@@ -47,7 +47,7 @@ module IMCV.Koluki.Tests {
 
             it("should initialise correctly", () => {
                 var surchargeRepositoryMock: any = {
-                    getDeliverySurchargeBySuburb(suburb: string) {
+                    getDeliverySurcharge(suburb: string, totalPayable: number) {
                         var deferred = $qMock.defer();
                         deferred.resolve({
                             resultCode: -1

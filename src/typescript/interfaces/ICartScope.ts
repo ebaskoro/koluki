@@ -29,6 +29,12 @@ module IMCV.Koluki {
         isEmpty: boolean;
 
         /**
+         * True when order cannot be done or false otherwise.
+         *
+         */
+        cannotOrder: boolean;
+
+        /**
          * Removes the item from cart.
          *
          * @param item The item to remove.

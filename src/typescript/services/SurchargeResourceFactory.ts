@@ -25,7 +25,8 @@ module IMCV.Koluki {
                 get: {
                     method: "JSONP",
                     params: {
-                        suburb: "@suburb"
+                        suburb: "@suburb",
+                        totalPayable: "@totalPayable"
                     }
                 }
             });

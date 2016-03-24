@@ -32,9 +32,10 @@ module IMCV.Koluki {
             this._resource = resource;
         }
 
-        public getDeliverySurchargeBySuburb(suburb: string): IResource<Surcharge> {
+        public getDeliverySurcharge(suburb: string, totalPayable: number): IResource<Surcharge> {
             return this._resource.get({
-                suburb: suburb
+                suburb: suburb,
+                totalPayable: totalPayable
             });
         }
 

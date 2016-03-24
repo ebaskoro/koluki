@@ -35,12 +35,16 @@ module IMCV.Koluki {
 
             this._$scope.cart = this._cartRepository;
             this._$scope.isEmpty = (this._cartRepository.items.length === 0);
+            this._$scope.cannotOrder = (this._cartRepository.total < 25.00);
             this._$scope.remove = (item) => {
                 this._cartRepository.removeItem(item.product);
             };
 
             this._$scope.$watch(() => this._cartRepository.items.length,
                 (newValue, oldValue) => this._$scope.isEmpty = (newValue === 0));
+
+            this._$scope.$watch(() => this._cartRepository.total,
+                (newValue, oldValue) => this._$scope.cannotOrder = (newValue < 25.00));
         }
 
     }

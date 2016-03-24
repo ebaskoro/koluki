@@ -67,7 +67,8 @@ module IMCV.Koluki {
             this._toaster = toaster;
 
             this._surcharges = [];
-            surchargeRepository.getDeliverySurchargeBySuburb("").$promise
+            var totalCart = cartRepository.total;
+            surchargeRepository.getDeliverySurcharge(null, totalCart).$promise
                 .then((result: any) => {
                     if (result.resultCode === 0) {
                         var id = result.surcharge.id;
@@ -82,7 +83,8 @@ module IMCV.Koluki {
             this._orderRequest = new OrderRequest();
             this._modal = null;
 
-            if (cartRepository.isEmpty) {
+            if (cartRepository.isEmpty
+                || (cartRepository.total < 25.00)) {
                 $location.path("/cart");
             }
         }

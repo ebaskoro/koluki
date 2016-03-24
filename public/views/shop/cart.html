@@ -42,9 +42,16 @@
       </tbody>
     </table>
   </div>
+  <div class="row" ng-hide="isEmpty || !cannotOrder">
+    <div class="col-md-12 col-xs-12">
+      <uib-alert>
+        The Order button is disabled because there is a minimum total order of $25 for delivery.
+      </uib-alert>
+    </div>
+  </div>
   <div class="row text-right" ng-hide="isEmpty">
     <div class="col-md-12 col-xs-12 text-right">
-      <a href="#/order" class="btn btn-primary btn-lg">
+      <a href="#/order" class="btn btn-primary btn-lg" ng-class="{ disabled: cannotOrder }">
         <span class="fa fa-money"></span> Order Now
       </a>
     </div>
