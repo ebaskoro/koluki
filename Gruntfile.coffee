@@ -1,5 +1,6 @@
 ###
   Gruntfile.coffee
+
 ###
 
 module.exports = (grunt) ->
@@ -8,6 +9,12 @@ module.exports = (grunt) ->
   require('load-grunt-tasks') grunt
 
   grunt.initConfig
+    clean:
+      build: [
+        'public/js/**'
+        'public/css/**'
+      ]
+
     jade:
       main:
         options:
@@ -54,6 +61,16 @@ module.exports = (grunt) ->
         dest: 'test/spec/specs.js'
         options:
           target: 'es5'
+
+    coffee:
+      compile:
+        expand: true
+        flatten: true
+        src: [
+          'src/coffeescript/**/*.coffee'
+        ]
+        dest: 'public/js/'
+        ext: '.js'
 
     uglify:
       options:
@@ -246,10 +263,12 @@ module.exports = (grunt) ->
           config: 'tsd.json'
 
   grunt.registerTask 'build', [
+    'clean'
     'jade'
     'wiredep'
     'sass'
     'typescript:main'
+    'coffee'
   ]
 
   grunt.registerTask 'test:unit', [
