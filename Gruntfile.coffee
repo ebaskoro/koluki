@@ -8,6 +8,8 @@ module.exports = (grunt) ->
   require('time-grunt') grunt
   require('load-grunt-tasks') grunt
 
+  timestamp = grunt.template.today 'yyyymmddHHMMss'
+
   grunt.initConfig
     clean:
       build: [
@@ -94,6 +96,25 @@ module.exports = (grunt) ->
           ]
           'public/shop.html': [
             'public/shop.html'
+          ]
+
+    'string-replace':
+      prod:
+        files:
+          'public/': 'public/*.html'
+        options:
+          replacements: [
+              pattern: 'css/index.min.css'
+              replacement: 'css/index.min.css?' + timestamp
+            ,
+              pattern: 'js/index.min.js'
+              replacement: 'js/index.min.js?' + timestamp
+            ,
+              pattern: 'css/shop.min.css'
+              replacement: 'css/shop.min.css?' + timestamp
+            ,
+              pattern: 'js/shop.min.js'
+              replacement: 'js/shop.min.js?' + timestamp
           ]
 
     concat:
@@ -304,7 +325,8 @@ module.exports = (grunt) ->
     'concat'
     'copy:prod'
     'processhtml:prod'
-    'rsync:prod'
+    'string-replace'
+    #'rsync:prod'
   ]
 
   grunt.registerTask 'default', [

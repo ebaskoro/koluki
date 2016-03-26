@@ -26,6 +26,7 @@
     "grunt-processhtml": "^0.3.8",
     "grunt-protractor-runner": "^3.0.0",
     "grunt-rsync": "^0.6.2",
+    "grunt-string-replace": "^1.2.1",
     "grunt-tsd": "^0.1.0",
     "grunt-typescript": "^0.8.0",
     "grunt-wiredep": "^2.0.0",
