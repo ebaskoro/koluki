@@ -29,6 +29,7 @@ module IMCV.Koluki {
         private _surcharges: Surcharge[];
         private _orderRequest: OrderRequest;
         private _modal: IModalServiceInstance;
+        private _loading: boolean;
 
         public static $inject = [
             "CartRepository",
@@ -78,10 +79,12 @@ module IMCV.Koluki {
                         this._surcharges.push(surcharge);
                     }
                 })
+                .finally(() => this._loading = false)
             ;
 
             this._orderRequest = new OrderRequest();
             this._modal = null;
+            this._loading = true;
 
             if (cartRepository.isEmpty
                 || (cartRepository.total < 25.00)) {
@@ -109,6 +112,10 @@ module IMCV.Koluki {
 
         public get form(): any {
             return this._orderRequest;
+        }
+
+        public get isLoading(): boolean {
+            return this._loading;
         }
 
         public order() {

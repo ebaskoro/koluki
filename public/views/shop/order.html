@@ -22,10 +22,13 @@
           <td class="text-right">{{ item.product.price | currency }}</td>
           <td class="text-right">{{ (item.quantity * item.product.price) | currency }}</td>
         </tr>
-        <tr ng-if="vm.surcharges.length" ng-repeat="surcharge in vm.surcharges">
+        <tr ng-if="!vm.isLoading && vm.surcharges.length" ng-repeat="surcharge in vm.surcharges">
           <td colspan="2">{{ surcharge.name }}</td>
           <td class="text-right">{{ surcharge.price | currency }}</td>
           <td class="text-right">{{ surcharge.price | currency }}</td>
+        </tr>
+        <tr ng-if="vm.isLoading">
+          <td colspan="4">Calculating surcharges <i class="fa fa-spinner fa-spin"></i></td>
         </tr>
         <tr>
           <td colspan="3" class="text-right"><h3>Total</h3></td>
@@ -81,7 +84,7 @@
   <div class="row text-right">
     <div class="col-md-12 col-xs-12 text-right">
       <a href="#/" class="btn btn-default btn-lg">Cancel</a>
-      <button class="btn btn-primary btn-lg" ng-click="vm.order()">
+      <button class="btn btn-primary btn-lg" ng-class="{ disabled: vm.isLoading }" ng-click="vm.order()">
         <span class="fa fa-ship"></span> Confirm
       </button>
     </div>
