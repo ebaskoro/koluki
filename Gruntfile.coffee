@@ -326,7 +326,7 @@ module.exports = (grunt) ->
     'copy:prod'
     'processhtml:prod'
     'string-replace'
-    #'rsync:prod'
+    'rsync:prod'
   ]
 
   grunt.registerTask 'default', [
