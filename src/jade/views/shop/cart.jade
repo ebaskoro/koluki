@@ -1,0 +1,55 @@
+//- cart.jade
+  
+.container
+  .row
+    .col-md-12.col-xs-12
+      h2 Shopping Cart
+      p
+        a(
+          href=""
+          ng-click="back()"
+        )
+          span.fa.fa-arrow-left
+          |  back
+  .row
+    .col-md-12.col-xs-12(ng-show="isEmpty")
+      p
+        | Your cart is empty. Start shopping 
+        a(href="#/") now
+        | .
+    table.table(ng-hide="isEmpty")
+      thead
+        tr
+          th
+          th Product
+          th.text-center Quantity
+          th.text-right Price
+          th.text-right Total
+      tbody
+        tr(ng-repeat="item in cart.items")
+          td.text-center
+            button(
+              type="button"
+              ng-click="remove(item)"
+            )
+              span.fa.fa-remove
+          td {{ item.product.title }}
+          td.text-center {{ item.quantity }}
+          td.text-right {{ item.product.price | currency }}
+          td.text-right {{ (item.quantity * item.product.price) | currency }}
+        tr
+          td.text-right(colspan="4")
+            h3 Total
+          td.text-right
+            h3 {{ cart.total | currency }}
+  .row(ng-hide="isEmpty || !cannotOrder")
+    .col-md-12.col-xs-12
+      uib-alert The Order button is disabled because there is a minimum total order of $25 for delivery.
+  .row.text-right(ng-hide="isEmpty")
+    .col-md-12.col-xs-12.text-right
+      a.btn.btn-primary.btn-lg(
+        href="#/order"
+        ng-class="{ disabled: cannotOrder }"
+      )
+        span.fa.fa-money
+        |  Order Now

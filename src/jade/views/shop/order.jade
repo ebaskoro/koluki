@@ -1,0 +1,103 @@
+//- order.jade
+
+.container
+  .row
+    .col-md-12.col-xs-12
+      h2 Order
+  .row
+    .col-md-12.col-xs-12
+      table.table
+        thead
+          tr
+            th Product
+            th.text-center Quantity
+            th.text-right Price
+            th.text-right Total
+        tbody
+          tr(ng-repeat="item in vm.items")
+            td {{ item.product.title }}
+            td.text-center {{ item.quantity }}
+            td.text-right {{ item.product.price | currency }}
+            td.text-right {{ (item.quantity * item.product.price) | currency }}
+          tr(
+            ng-if="!vm.isLoading && vm.surcharges.length"
+            ng-repeat="surcharge in vm.surcharges"
+          )
+            td(colspan="2") {{ surcharge.name }}
+            td.text-right {{ surcharge.price | currency }}
+            td.text-right {{ surcharge.price | currency }}
+          tr(ng-if="vm.isLoading")
+            td(colspan="4")
+              | Calculating surcharges 
+              i.fa.fa-spinner.fa-spin
+          tr
+            td.text-right(colspan="3")
+              h3 Total
+            td.text-right
+              h3 {{ vm.total | currency }}
+  .row
+    .col-md-7.col-xs-12
+      .form-group
+        label
+          | Full Name 
+          span.glyphicon.glyphicon-asterisk.text-danger
+        input.form-control.input-lg(
+          type="text"
+          ng-model="vm.form.fullName"
+          required
+        )
+  .row
+    .col-md-5.col-xs-12
+      .form-group
+        label
+          | Mobile Number 
+          span.glyphicon.glyphicon-asterisk.text-danger
+        input.form-control.input-lg(
+          type="text"
+          ng-model="vm.form.mobileNumber"
+          required
+        )
+  .row
+    .col-md-7.col-xs-12
+      .form-group
+        label
+          | Email Address 
+          span.glyphicon.glyphicon-asterisk.text-danger
+        input.form-control.input-lg(
+          type="email"
+          ng-model="vm.form.emailAddress"
+          required
+        )
+  .row
+    .col-md-7.col-xs-12
+      .form-group
+        label
+          | Address 
+          span.glyphicon.glyphicon-asterisk.text-danger
+        input.form-control.input-lg(
+          type="text"
+          ng-model="vm.form.address"
+          required
+        )
+  .row
+    .col-md-8.col-xs-12
+      .form-group
+        label
+          | Suburb 
+          span.glyphicon.glyphicon-asterisk.text-danger
+        select.form-control.input-lg(
+          ng-model="vm.form.suburb"
+          required
+        )
+          option(value="" selected) Select
+          option(value="Footscray") Footscray
+  .row.text-right
+    .col-md-12.col-xs-12.text-right
+      a.btn.btn-default.btn-lg(href="#/") Cancel
+      button.btn.btn-primary.btn-lg(
+        ng-class="{ disabled: vm.isLoading }"
+        ng-click="vm.order()"
+      )
+        span.fa.fa-ship
+        |  Confirm
+toaster-container

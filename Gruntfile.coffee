@@ -13,22 +13,28 @@ module.exports = (grunt) ->
   grunt.initConfig
     clean:
       build: [
-        'public/js/**'
-        'public/css/**'
+        'public/*.html'
+        'public/views'
+        'public/js'
+        'public/css'
       ]
 
     jade:
       main:
         options:
           pretty: true
-        files:
-          'public/index.html': [
-            'src/jade/index.jade'
+        files: [
+          expand: true
+          cwd: 'src/jade'
+          src: [
+            'index.jade'
+            'shop.jade'
+            'views/**/*.jade'
           ]
-          'public/shop.html': [
-            'src/jade/shop.jade'
-          ]
-
+          dest: 'public/'
+          ext: '.html'
+        ]
+  
     wiredep:
       main:
         src: [
