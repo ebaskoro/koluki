@@ -10,12 +10,18 @@ env:
     - TSD_GITHUB_TOKEN=3a9ce4a942d02979bb3825a327da048f3efd8afd
 
 notifications:
+  slack:
+    rooms:
+      - koluki:VDaXhjBB9j25YIuN7jZDWoxd
+    on_success: always
+    on_failure: always
+    on_start: always
   webhooks:
     urls:
       - https://webhooks.gitter.im/e/01a13e1e4162d08aebee
-    on_success: always  # options: [always|never|change] default: always
-    on_failure: always  # options: [always|never|change] default: always
-    on_start: always    # options: [always|never|change] default: always
+    on_success: always
+    on_failure: always
+    on_start: always
 
 install:
   - npm install bower
