@@ -1,5 +1,5 @@
 //- ordered.jade
-  
+
 .container
   .row
     .col-md-12.col-xs-12
@@ -8,10 +8,10 @@
     .col-md-12.col-xs-12
       p Dear {{ vm.fullName }}, your order has been submitted. An email confirming your order has been sent to your email address. Below is the order reference:
       h3 {{ vm.reference }}
-      p Please transfer your payment to IMCV Koluki Bank account as detailed below
+      p Please transfer your payment to IMCV Koluki Bank account as detailed below:
       p Bank: National Bank
-      p BSB Number: xxx-xxx
-      p Account Number: xxxxxx
+      p BSB Number: 083-144
+      p Account Number: 989405607
       p Reference: <b>{{ vm.reference }}</b>
       p Amount: <b>{{ vm.totalPayable | currency }}</b>
       p Jazakumullah. Wassalaamu 'alaikum.

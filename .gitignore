@@ -9,6 +9,7 @@
 /test/spec/specs.js
 /test/spec/result.html
 /public/*.html
+/public/views
 /public/css
 /public/fonts
 /public/js
