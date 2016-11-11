@@ -1,6 +1,6 @@
 # IMCV Koluki Web
 
-version 0.0.1
+version 0.0.2
 
 Online shopping web application for IMCV Koluki.
 
