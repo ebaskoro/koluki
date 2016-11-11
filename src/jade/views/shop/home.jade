@@ -1,0 +1,46 @@
+//- home.jade
+
+.container-fluid(ng-controller="PromotionController as promo")
+  .row(ng-if="promo.isLoading")
+    .row
+      .col-md-12.col-xs-12
+        h2.text-center
+          | Loading promotions 
+          i.fa.fa-spinner.fa-spin
+  .row(ng-if="!promo.isLoading")
+    uib-carousel(interval="promo.interval")
+      uib-slide(
+        ng-repeat="slide in promo.slides"
+        active="slide.active"
+      )
+        img(
+          src="http://placehold.it/600x400"
+          ng-src="{{ slide.imageUrl }}"
+          alt="{{ slide.imageUrl }}"
+          style="margin: auto;"
+        )
+        .carousel-caption
+          h4 {{ slide.title }}
+          p {{ slide.description }}
+.container(ng-if="vm.isLoading")
+  .row
+    .col-md-12.col-xs-12
+      h2.text-center
+        | Loading categories 
+        i.fa.fa-spinner.fa-spin
+.container(ng-if="!vm.isLoading")
+  .row
+    h2.text-center Categories
+  .row.text-center(ng-if="!vm.isLoading")
+    .col-md-3.col-xs-12(ng-repeat="category in vm.categories")
+      a(
+        ng-href="#/category/{{ category.id }}"
+        ng-show="category.productCount > 0"
+      )
+        h4
+          | {{ category.title }} 
+          span.badge {{ category.productCount }}
+      div(ng-show="category.productCount === 0")
+        h4
+          | {{ category.title }} 
+          span.badge 0
